@@ -1,3 +1,4 @@
+$(function () {
 var today = dayjs()
 var currentTime = dayjs().format('HH');
 var displayDayTime = $('#currentDay');
@@ -14,6 +15,7 @@ var hour5 = $("#hour-5");
 var saveBtn = $(".saveBtn");
 var content9 = $('.content-9');
 var hour9text = $('#hour9text');
+var clearBtn = $(".clearBtn");
 
 displayDayTime.text(currentDateDayTime);
 
@@ -102,6 +104,7 @@ hour9.on("click", function () {
   hour3.hide();
   hour4.hide();
   hour5.hide();
+  clearBtn.hide();
   hour9.addClass('focus-element');
 });
 
@@ -114,6 +117,7 @@ hour10.on("click", function () {
   hour3.hide();
   hour4.hide();
   hour5.hide();
+  clearBtn.hide();
   hour10.addClass('focus-element');
 });
 
@@ -126,6 +130,7 @@ hour11.on("click", function () {
   hour3.hide();
   hour4.hide();
   hour5.hide();
+  clearBtn.hide();
   hour11.addClass('focus-element');
 });
 
@@ -138,6 +143,7 @@ hour12.on("click", function () {
   hour3.hide();
   hour4.hide();
   hour5.hide();
+  clearBtn.hide();
   hour12.addClass('focus-element');
 });
 
@@ -150,6 +156,7 @@ hour1.on("click", function () {
   hour3.hide();
   hour4.hide();
   hour5.hide();
+  clearBtn.hide();
   hour1.addClass('focus-element');
 });
 
@@ -162,6 +169,7 @@ hour2.on("click", function () {
   hour3.hide();
   hour4.hide();
   hour5.hide(); 
+  clearBtn.hide();
   hour2.addClass('focus-element');
 });
 
@@ -174,6 +182,7 @@ hour3.on("click", function () {
   hour2.hide();
   hour4.hide();
   hour5.hide();
+  clearBtn.hide();
   hour3.addClass('focus-element');
 });
 
@@ -186,6 +195,7 @@ hour4.on("click", function () {
   hour2.hide();
   hour3.hide();
   hour5.hide();
+  clearBtn.hide();
   hour4.addClass('focus-element');
 });
 
@@ -198,33 +208,74 @@ hour5.on("click", function () {
   hour2.hide();
   hour3.hide();
   hour4.hide();
+  clearBtn.hide();
   hour5.addClass('focus-element');
 });
 
-var test = 'hello this local storage is working';
-// how to store and retrive the data from local storage
-// localStorage.setItem('hour9', test);
-// var x = $("#myTextarea").val(localStorage.getItem('hour9'));
-
-
-// get the value of the text area and write it to an alert
-
-
-
-saveBtn.on("click", function () {
-  var textAreaValue = $.trim($("#myTextarea").val());
-  localStorage.setItem('hour9', textAreaValue);
-  var x = localStorage.getItem('hour9');
-  console.log(x);
-  $("#myTextarea").val("This is the new value");
+$(document).ready(function() {
+  var savedValue9 = localStorage.getItem('hour9');
+  if (savedValue9 !== null) {
+    $(".content9").val(savedValue9);
+  }
+  var savedValue10 = localStorage.getItem('hour10');
+  if (savedValue10 !== null) {
+    $(".content10").val(savedValue10);
+  }
+  var savedValue11 = localStorage.getItem('hour11');
+  if (savedValue11 !== null) {
+    $(".content11").val(savedValue11);
+  }
+  var savedValue12 = localStorage.getItem('hour12');
+  if (savedValue12 !== null) {
+    $(".content12").val(savedValue12);
+  }
+  var savedValue1 = localStorage.getItem('hour1');
+  if (savedValue1 !== null) {
+    $(".content1").val(savedValue1);
+  }
+  var savedValue2 = localStorage.getItem('hour2');
+  if (savedValue2 !== null) {
+    $(".content2").val(savedValue2);
+  }
+  var savedValue3 = localStorage.getItem('hour3');
+  if (savedValue3 !== null) {
+    $(".content3").val(savedValue3);
+  }
+  var savedValue4 = localStorage.getItem('hour4');
+  if (savedValue4 !== null) {
+    $(".content4").val(savedValue4);
+  }
+  var savedValue5 = localStorage.getItem('hour5');
+  if (savedValue5 !== null) {
+    $(".content5").val(savedValue5);
+  }
 });
 
+saveBtn.on("click", function () {
+  var textAreaValue9 = $.trim($(".content9").val());
+  localStorage.setItem('hour9', textAreaValue9);
+  var textAreaValue10 = $.trim($(".content10").val());
+  localStorage.setItem('hour10', textAreaValue10);
+  var textAreaValue11 = $.trim($(".content11").val());
+  localStorage.setItem('hour11', textAreaValue11);
+  var textAreaValue12 = $.trim($(".content12").val());
+  localStorage.setItem('hour12', textAreaValue12);
+  var textAreaValue1 = $.trim($(".content1").val());
+  localStorage.setItem('hour1', textAreaValue1);
+  var textAreaValue2 = $.trim($(".content2").val());
+  localStorage.setItem('hour2', textAreaValue2);
+  var textAreaValue3 = $.trim($(".content3").val());
+  localStorage.setItem('hour3', textAreaValue3);
+  var textAreaValue4 = $.trim($(".content4").val());
+  localStorage.setItem('hour4', textAreaValue4);
+  var textAreaValue5 = $.trim($(".content5").val());
+  localStorage.setItem('hour5', textAreaValue5);
+  location.reload();
+});
 
-
-
-
-$(function () {
-
-
+clearBtn.on("click", function () {
+  localStorage.clear();
+  location.reload();
+});
 });
 
